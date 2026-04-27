@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Little Brain Games</string>
+    <string name="title_activity_main">Little Brain Games</string>
+    <string name="package_name">app.kidlearn.tinygenius</string>
+    <string name="custom_url_scheme">app.kidlearn.tinygenius</string>
+</resources>
