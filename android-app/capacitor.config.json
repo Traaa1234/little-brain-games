@@ -1,0 +1,24 @@
+{
+  "appId": "app.kidlearn.tinygenius",
+  "appName": "Little Brain Games",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "backgroundColor": "#FFF8EC",
+      "showSpinner": false,
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER"
+    },
+    "StatusBar": {
+      "backgroundColor": "#FFF8EC",
+      "style": "DARK",
+      "overlaysWebView": false
+    }
+  }
+}

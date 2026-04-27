@@ -1,0 +1,19 @@
+{
+  "name": "little-brain-games-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Android wrapper for Little Brain Games kids' learning game",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-game.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}
