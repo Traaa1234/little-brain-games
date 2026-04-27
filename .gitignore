@@ -1,0 +1,28 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Node (used by Capacitor in Phase 1)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Capacitor / Android (Phase 1)
+android-app/android/.gradle/
+android-app/android/build/
+android-app/android/app/build/
+android-app/android/local.properties
+android-app/android/.idea/
+android-app/android/captures/
+android-app/android/.cxx/
+*.iml
+
+# Secrets
+.env
+.env.local
+.env.*.local
+*.jks
+*.keystore
