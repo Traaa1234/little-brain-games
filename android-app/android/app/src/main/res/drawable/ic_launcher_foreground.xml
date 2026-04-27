@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Rounded "thinking head" silhouette in cream, centered in the 66dp safe zone -->
+    <path
+        android:fillColor="#FFF8EC"
+        android:strokeColor="#5B3A29"
+        android:strokeWidth="1.6"
+        android:pathData="M 36 38 Q 36 26, 54 26 Q 72 26, 72 38 Q 80 40, 80 52 Q 80 64, 72 68 Q 72 80, 60 84 Q 54 86, 48 84 Q 36 80, 36 68 Q 28 64, 28 52 Q 28 40, 36 38 Z" />
+
+    <!-- Eyes -->
+    <path android:fillColor="#5B3A29" android:pathData="M 46 56 m -2 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0 Z" />
+    <path android:fillColor="#5B3A29" android:pathData="M 62 56 m -2 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0 Z" />
+
+    <!-- Smile -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#5B3A29"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M 46 66 Q 54 72, 62 66" />
+
+    <!-- Three accent dots (yellow / sage / peach) suggesting the four-game variety -->
+    <path android:fillColor="#E9C46A" android:pathData="M 34 36 m -3 0 a 3 3 0 1 0 6 0 a 3 3 0 1 0 -6 0 Z" />
+    <path android:fillColor="#A8C686" android:pathData="M 74 36 m -3 0 a 3 3 0 1 0 6 0 a 3 3 0 1 0 -6 0 Z" />
+    <path android:fillColor="#F6CBA3" android:pathData="M 54 30 m -3 0 a 3 3 0 1 0 6 0 a 3 3 0 1 0 -6 0 Z" />
+</vector>
