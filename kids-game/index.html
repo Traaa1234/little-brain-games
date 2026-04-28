@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Learning Games for Kids</title>
 <style>
 :root {
@@ -201,6 +201,24 @@ h1 {
 }
 .pattern-svg { width: 48px; height: 48px; }
 .jigsaw-info { text-align: center; margin: 8px 0 12px; color: var(--text); }
+.jigsaw-fit-btn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 200;
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: white;
+  border: 2px solid var(--text);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  user-select: none;
+}
+.jigsaw-fit-btn:active { transform: translateY(1px); }
+.jigsaw-container.zoomed { transform-origin: top left; transition: transform 0.25s ease; }
 .jigsaw-scene-picker {
   display: flex;
   gap: 8px;
@@ -1551,6 +1569,7 @@ games.puzzle = {
   pieces: [],
   drag: null,
   customScenes: [],
+  zoomLevel: 1,
 
   // [cols, rows] per puzzle level (1..5) — 10, 25, 50, 75, 100 pieces
   gridFor() {
@@ -1748,7 +1767,10 @@ games.puzzle = {
     const { boardWidth, boardHeight, scene, pieces } = games.puzzle;
     const placedCount = pieces.filter(p => p.placed).length;
     const ghostInner = games.puzzle.sceneInnerSvg(scene, boardWidth, boardHeight);
+    // Reset zoom whenever the puzzle is re-rendered (new scene, new level, restart).
+    games.puzzle.zoomLevel = 1;
     area.innerHTML = `
+      <button class="jigsaw-fit-btn" id="jigsaw-fit-btn">🔍 Fit all</button>
       <div class="jigsaw-scene-picker" id="jigsaw-picker"></div>
       <div class="jigsaw-info">
         Drag the pieces onto the board · <span id="jigsaw-counter">${placedCount}</span> / ${pieces.length} placed
@@ -1760,6 +1782,9 @@ games.puzzle = {
         <div class="jigsaw-tray" id="jigsaw-tray" style="min-height:120px;"></div>
       </div>
     `;
+    // Wire up the floating Fit-on-screen button.
+    const fitBtn = document.getElementById('jigsaw-fit-btn');
+    if (fitBtn) fitBtn.addEventListener('click', () => games.puzzle.toggleFitOnScreen());
     // Scene picker — built-in scenes + any uploaded ones + Upload button
     const picker = document.getElementById('jigsaw-picker');
     games.puzzle.allScenes().forEach((s, i) => {
@@ -1868,33 +1893,108 @@ games.puzzle = {
     });
   },
 
+  // Convert a clientY/clientX point into the puzzle container's local coord space,
+  // accounting for any "Fit on screen" zoom applied via CSS transform.
+  clientToLocal(clientX, clientY) {
+    const container = document.getElementById('jigsaw-container');
+    const cRect = container.getBoundingClientRect();
+    const z = games.puzzle.zoomLevel || 1;
+    return {
+      x: (clientX - cRect.left) / z,
+      y: (clientY - cRect.top) / z,
+    };
+  },
+
+  // Re-position the currently-dragged piece based on the last known pointer location.
+  // Called both on pointermove and after auto-scroll moves the page underneath us.
+  updateDraggedPiecePos() {
+    const drag = games.puzzle.drag;
+    if (!drag) return;
+    const local = games.puzzle.clientToLocal(drag.lastClientX, drag.lastClientY);
+    drag.piece.x = local.x - drag.offsetX;
+    drag.piece.y = local.y - drag.offsetY;
+    drag.piece.element.style.transform = `translate(${drag.piece.x}px,${drag.piece.y}px)`;
+  },
+
+  // Auto-scroll loop while dragging: if the finger is near the top or bottom edge
+  // of the viewport, scroll the page in that direction. Lets kids drag a piece
+  // upward to a board that's currently scrolled out of view.
+  autoScrollTick() {
+    const drag = games.puzzle.drag;
+    if (!drag) return;
+    const SCROLL_ZONE = 90;
+    const SCROLL_SPEED = 12;
+    const vh = window.innerHeight;
+    let scrolled = false;
+    if (drag.lastClientY < SCROLL_ZONE) {
+      window.scrollBy(0, -SCROLL_SPEED);
+      scrolled = true;
+    } else if (drag.lastClientY > vh - SCROLL_ZONE) {
+      window.scrollBy(0, SCROLL_SPEED);
+      scrolled = true;
+    }
+    if (scrolled) games.puzzle.updateDraggedPiecePos();
+    drag.rafId = requestAnimationFrame(games.puzzle.autoScrollTick);
+  },
+
+  // Toggle "Fit on screen" — zoom the puzzle container so board + tray fit
+  // in the viewport at once, OR zoom back to 100%. Uses CSS scale on the
+  // container; drag math accounts for this via `zoomLevel`.
+  toggleFitOnScreen() {
+    const container = document.getElementById('jigsaw-container');
+    const btn = document.getElementById('jigsaw-fit-btn');
+    if (!container) return;
+    if ((games.puzzle.zoomLevel || 1) !== 1) {
+      games.puzzle.zoomLevel = 1;
+      container.classList.remove('zoomed');
+      container.style.transform = '';
+      if (btn) btn.textContent = '🔍 Fit all';
+      return;
+    }
+    // Compute scale needed so container content fits the viewport (with breathing room).
+    const fullW = container.scrollWidth;
+    const fullH = container.scrollHeight;
+    const availW = window.innerWidth - 32;
+    const availH = window.innerHeight - 160; // leave space for header + status bar
+    const scale = Math.min(1, Math.min(availW / fullW, availH / fullH));
+    if (scale >= 0.99) return; // already fits — nothing to do
+    games.puzzle.zoomLevel = scale;
+    container.classList.add('zoomed');
+    container.style.transform = `scale(${scale})`;
+    if (btn) btn.textContent = '🔍 Reset zoom';
+    // Scroll to top so the zoomed puzzle is visible from the start.
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  },
+
   onPointerDown(e, piece) {
     if (piece.placed) return;
     e.preventDefault();
     const el = piece.element;
     el.setPointerCapture(e.pointerId);
     el.classList.add('dragging');
-    const container = document.getElementById('jigsaw-container');
-    const cRect = container.getBoundingClientRect();
+    const local = games.puzzle.clientToLocal(e.clientX, e.clientY);
     games.puzzle.drag = {
       piece,
       pointerId: e.pointerId,
-      offsetX: e.clientX - cRect.left - piece.x,
-      offsetY: e.clientY - cRect.top - piece.y,
+      offsetX: local.x - piece.x,
+      offsetY: local.y - piece.y,
+      lastClientX: e.clientX,
+      lastClientY: e.clientY,
+      rafId: null,
     };
     el.addEventListener('pointermove', games.puzzle.onPointerMove);
     el.addEventListener('pointerup', games.puzzle.onPointerUp);
     el.addEventListener('pointercancel', games.puzzle.onPointerUp);
+    // Kick off the auto-scroll loop.
+    games.puzzle.drag.rafId = requestAnimationFrame(games.puzzle.autoScrollTick);
   },
 
   onPointerMove(e) {
     const drag = games.puzzle.drag;
     if (!drag || e.pointerId !== drag.pointerId) return;
-    const container = document.getElementById('jigsaw-container');
-    const cRect = container.getBoundingClientRect();
-    drag.piece.x = e.clientX - cRect.left - drag.offsetX;
-    drag.piece.y = e.clientY - cRect.top - drag.offsetY;
-    drag.piece.element.style.transform = `translate(${drag.piece.x}px,${drag.piece.y}px)`;
+    drag.lastClientX = e.clientX;
+    drag.lastClientY = e.clientY;
+    games.puzzle.updateDraggedPiecePos();
   },
 
   onPointerUp(e) {
@@ -1906,16 +2006,20 @@ games.puzzle = {
     el.removeEventListener('pointermove', games.puzzle.onPointerMove);
     el.removeEventListener('pointerup', games.puzzle.onPointerUp);
     el.removeEventListener('pointercancel', games.puzzle.onPointerUp);
+    if (drag.rafId) cancelAnimationFrame(drag.rafId);
     games.puzzle.drag = null;
 
-    // Compute target position (where piece element should sit when placed correctly)
+    // Compute target position (where piece element should sit when placed correctly).
+    // Both targetX/Y and piece.x/y are in unscaled container coords, so the math
+    // works regardless of any CSS zoom applied by Fit-on-screen.
     const board = document.getElementById('jigsaw-board');
     const margin = games.puzzle.knobDepth + 4;
     const targetX = board.offsetLeft + piece.correctX - margin;
     const targetY = board.offsetTop + piece.correctY - margin;
 
-    // Snap threshold scales with piece size — larger pieces, larger snap zone
-    const snap = Math.max(20, Math.min(games.puzzle.pieceWidth, games.puzzle.pieceHeight) * 0.35);
+    // Bigger snap zone (50% of piece size) so a "close enough" drop snaps —
+    // young kids don't need pixel-perfect accuracy.
+    const snap = Math.max(24, Math.min(games.puzzle.pieceWidth, games.puzzle.pieceHeight) * 0.5);
     if (Math.hypot(piece.x - targetX, piece.y - targetY) < snap) {
       piece.x = targetX;
       piece.y = targetY;
