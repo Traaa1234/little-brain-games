@@ -1,5 +1,22 @@
 apply plugin: 'com.android.application'
 
+// Load keystore credentials from android-app/.env.local (one directory up from android/).
+def loadEnvLocal() {
+    def envFile = file("../../.env.local")
+    def env = [:]
+    if (envFile.exists()) {
+        envFile.eachLine { line ->
+            line = line.trim()
+            if (line && !line.startsWith("#") && line.contains("=")) {
+                def idx = line.indexOf("=")
+                env[line.substring(0, idx).trim()] = line.substring(idx + 1).trim()
+            }
+        }
+    }
+    return env
+}
+def envLocal = loadEnvLocal()
+
 android {
     namespace "app.kidlearn.tinygenius"
     compileSdk rootProject.ext.compileSdkVersion
@@ -16,10 +33,23 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (envLocal.KEYSTORE_FILE && envLocal.KEYSTORE_PASSWORD && envLocal.KEY_ALIAS && envLocal.KEY_PASSWORD) {
+                storeFile file(envLocal.KEYSTORE_FILE)
+                storePassword envLocal.KEYSTORE_PASSWORD
+                keyAlias envLocal.KEY_ALIAS
+                keyPassword envLocal.KEY_PASSWORD
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (envLocal.KEYSTORE_FILE) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
