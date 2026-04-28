@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500">
+  <!-- Background gradient: cream to peach -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF8EC"/>
+      <stop offset="1" stop-color="#F6CBA3"/>
+    </linearGradient>
+    <linearGradient id="coral" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4A261"/>
+      <stop offset="1" stop-color="#E76F51"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="500" fill="url(#bg)"/>
+
+  <!-- Decorative shapes scattered -->
+  <circle cx="80" cy="80" r="22" fill="#E9C46A" opacity="0.7"/>
+  <circle cx="950" cy="60" r="14" fill="#A8C686" opacity="0.7"/>
+  <circle cx="900" cy="430" r="28" fill="#F4A261" opacity="0.5"/>
+  <circle cx="120" cy="420" r="18" fill="#A8C686" opacity="0.6"/>
+  <polygon points="60,250 90,210 120,250 90,290" fill="#E9C46A" opacity="0.45"/>
+  <rect x="930" y="230" width="36" height="36" fill="#F6CBA3" opacity="0.7" transform="rotate(20 948 248)"/>
+
+  <!-- Left side: stylized brain mascot, similar to icon -->
+  <g transform="translate(140 145)">
+    <ellipse cx="105" cy="105" rx="100" ry="100" fill="#F4A261" opacity="0.18"/>
+    <path d="M 50 70 Q 50 35, 105 35 Q 160 35, 160 70 Q 185 78, 185 115 Q 185 152, 160 162 Q 160 200, 125 215 Q 105 220, 85 215 Q 50 200, 50 162 Q 25 152, 25 115 Q 25 78, 50 70 Z"
+          fill="#FFF8EC" stroke="#5B3A29" stroke-width="3.6"/>
+    <circle cx="80" cy="120" r="6" fill="#5B3A29"/>
+    <circle cx="130" cy="120" r="6" fill="#5B3A29"/>
+    <path d="M 80 145 Q 105 162, 130 145" stroke="#5B3A29" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <circle cx="42" cy="60" r="9" fill="#E9C46A"/>
+    <circle cx="170" cy="60" r="9" fill="#A8C686"/>
+    <circle cx="105" cy="40" r="8" fill="#F6CBA3"/>
+  </g>
+
+  <!-- Right side: text block -->
+  <g transform="translate(420 100)" font-family="'Nunito', 'Baloo 2', system-ui, sans-serif">
+    <!-- Title -->
+    <text x="0" y="58" font-size="68" font-weight="800" fill="#5B3A29" letter-spacing="-1">Little Brain Games</text>
+
+    <!-- Tagline -->
+    <text x="0" y="108" font-size="26" font-weight="500" fill="#7a5a48">Memory · Patterns · Jigsaws · Logic</text>
+
+    <!-- Sub-tagline -->
+    <text x="0" y="148" font-size="22" font-weight="500" fill="#7a5a48">Gentle learning fun for ages 5–7</text>
+
+    <!-- Four game pills -->
+    <g transform="translate(0 195)">
+      <g>
+        <rect x="0" y="0" width="130" height="56" rx="28" fill="url(#coral)"/>
+        <text x="65" y="36" font-size="22" font-weight="700" fill="#FFF8EC" text-anchor="middle">🧠 Memory</text>
+      </g>
+      <g transform="translate(140 0)">
+        <rect x="0" y="0" width="130" height="56" rx="28" fill="#E9C46A"/>
+        <text x="65" y="36" font-size="22" font-weight="700" fill="#5B3A29" text-anchor="middle">🎨 Pattern</text>
+      </g>
+      <g transform="translate(280 0)">
+        <rect x="0" y="0" width="130" height="56" rx="28" fill="#A8C686"/>
+        <text x="65" y="36" font-size="22" font-weight="700" fill="#5B3A29" text-anchor="middle">🧩 Puzzle</text>
+      </g>
+      <g transform="translate(420 0)">
+        <rect x="0" y="0" width="130" height="56" rx="28" fill="#F6CBA3"/>
+        <text x="65" y="36" font-size="22" font-weight="700" fill="#5B3A29" text-anchor="middle">🦉 Logic</text>
+      </g>
+    </g>
+
+    <!-- Trust strip -->
+    <text x="0" y="305" font-size="20" font-weight="600" fill="#5B3A29">No ads · No tracking · No internet required</text>
+  </g>
+</svg>
