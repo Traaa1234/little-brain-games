@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1290" height="2796" viewBox="0 0 1290 2796">
+  <!-- Background -->
+  <rect width="1290" height="2796" fill="#FFF8EC"/>
+
+  <!-- Dynamic Island -->
+  <rect x="470" y="18" width="350" height="42" rx="21" fill="#1a1a1a"/>
+
+  <!-- Status bar — time -->
+  <text x="72" y="58" font-family="system-ui, sans-serif" font-size="48" font-weight="600" fill="#5B3A29">9:41</text>
+  <rect x="1168" y="30" width="70" height="32" rx="8" fill="none" stroke="#5B3A29" stroke-width="3.5"/>
+  <rect x="1238" y="39" width="7" height="14" rx="3" fill="#5B3A29"/>
+  <rect x="1171" y="33" width="58" height="26" rx="5" fill="#A8C686"/>
+  <circle cx="1100" cy="46" r="7" fill="#5B3A29"/>
+  <circle cx="1122" cy="46" r="7" fill="#5B3A29"/>
+  <circle cx="1144" cy="46" r="7" fill="#5B3A29"/>
+
+  <!-- Back button -->
+  <text x="72" y="168" font-family="system-ui, sans-serif" font-size="52" fill="#E9C46A">‹ Back</text>
+
+  <!-- Game header bar -->
+  <rect x="0" y="190" width="1290" height="130" fill="#E9C46A"/>
+  <text x="645" y="278" font-family="system-ui, sans-serif" font-size="72" font-weight="800" fill="#5B3A29" text-anchor="middle">🎨 Pattern</text>
+
+  <!-- Difficulty pills -->
+  <rect x="154" y="360" width="250" height="74" rx="37" fill="#E9C46A"/>
+  <text x="279" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#5B3A29" text-anchor="middle">Easy</text>
+  <rect x="424" y="360" width="250" height="74" rx="37" fill="#FFF8EC" stroke="#E9C46A" stroke-width="3"/>
+  <text x="549" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#E9C46A" text-anchor="middle">Medium</text>
+  <rect x="694" y="360" width="250" height="74" rx="37" fill="#FFF8EC" stroke="#E9C46A" stroke-width="3"/>
+  <text x="819" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#E9C46A" text-anchor="middle">Hard</text>
+
+  <!-- Instruction -->
+  <text x="645" y="548" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#5B3A29" text-anchor="middle">What comes next?</text>
+
+  <!-- Score -->
+  <text x="645" y="620" font-family="system-ui, sans-serif" font-size="40" fill="#7a5a48" text-anchor="middle">Question 3 of 5 · Score: 2</text>
+
+  <!-- Pattern sequence boxes — 5 boxes in a row (last one is ?) -->
+  <!-- Box 1 — triangle (coral) -->
+  <rect x="60" y="680" width="218" height="218" rx="24" fill="#F4A261" stroke="#5B3A29" stroke-width="3"/>
+  <polygon points="169,720 248,880 90,880" fill="#5B3A29"/>
+
+  <!-- Box 2 — circle (green) -->
+  <rect x="296" y="680" width="218" height="218" rx="24" fill="#A8C686" stroke="#5B3A29" stroke-width="3"/>
+  <circle cx="405" cy="789" r="72" fill="#5B3A29"/>
+
+  <!-- Box 3 — triangle (coral) -->
+  <rect x="532" y="680" width="218" height="218" rx="24" fill="#F4A261" stroke="#5B3A29" stroke-width="3"/>
+  <polygon points="641,720 720,880 562,880" fill="#5B3A29"/>
+
+  <!-- Box 4 — circle (green) -->
+  <rect x="768" y="680" width="218" height="218" rx="24" fill="#A8C686" stroke="#5B3A29" stroke-width="3"/>
+  <circle cx="877" cy="789" r="72" fill="#5B3A29"/>
+
+  <!-- Box 5 — UNKNOWN -->
+  <rect x="1004" y="680" width="218" height="218" rx="24" fill="#F6CBA3" stroke="#E9C46A" stroke-width="5" stroke-dasharray="12,8"/>
+  <text x="1113" y="810" font-family="system-ui, sans-serif" font-size="100" font-weight="800" fill="#E9C46A" text-anchor="middle">?</text>
+
+  <!-- "Choose your answer:" label -->
+  <text x="645" y="980" font-family="system-ui, sans-serif" font-size="50" font-weight="600" fill="#5B3A29" text-anchor="middle">Choose your answer:</text>
+
+  <!-- Answer options — 3 large tiles -->
+  <!-- Option A — triangle (correct answer) -->
+  <rect x="60" y="1030" width="350" height="350" rx="36" fill="#FFF8EC" stroke="#E9C46A" stroke-width="5"/>
+  <polygon points="235,1070 364,1350 106,1350" fill="#F4A261"/>
+  <text x="235" y="1420" font-family="system-ui, sans-serif" font-size="44" font-weight="600" fill="#5B3A29" text-anchor="middle">A</text>
+
+  <!-- Option B — square (wrong) -->
+  <rect x="470" y="1030" width="350" height="350" rx="36" fill="#FFF8EC" stroke="#E9C46A" stroke-width="5"/>
+  <rect x="560" y="1090" width="220" height="220" rx="12" fill="#A8C686"/>
+  <text x="645" y="1420" font-family="system-ui, sans-serif" font-size="44" font-weight="600" fill="#5B3A29" text-anchor="middle">B</text>
+
+  <!-- Option C — star (wrong) -->
+  <rect x="880" y="1030" width="350" height="350" rx="36" fill="#FFF8EC" stroke="#E9C46A" stroke-width="5"/>
+  <text x="1055" y="1280" font-family="system-ui, sans-serif" font-size="160" text-anchor="middle">⭐</text>
+  <text x="1055" y="1420" font-family="system-ui, sans-serif" font-size="44" font-weight="600" fill="#5B3A29" text-anchor="middle">C</text>
+
+  <!-- Progress bar -->
+  <rect x="60" y="1470" width="1170" height="24" rx="12" fill="#F6CBA3"/>
+  <rect x="60" y="1470" width="468" height="24" rx="12" fill="#E9C46A"/>
+
+  <!-- Pattern type selector -->
+  <text x="645" y="1600" font-family="system-ui, sans-serif" font-size="44" fill="#7a5a48" text-anchor="middle">Pattern type:</text>
+  <rect x="195" y="1630" width="270" height="74" rx="37" fill="#E9C46A"/>
+  <text x="330" y="1679" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#5B3A29" text-anchor="middle">Shapes</text>
+  <rect x="510" y="1630" width="270" height="74" rx="37" fill="#FFF8EC" stroke="#E9C46A" stroke-width="3"/>
+  <text x="645" y="1679" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#E9C46A" text-anchor="middle">Letters</text>
+  <rect x="825" y="1630" width="270" height="74" rx="37" fill="#FFF8EC" stroke="#E9C46A" stroke-width="3"/>
+  <text x="960" y="1679" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#E9C46A" text-anchor="middle">Words</text>
+
+  <!-- iOS Home Indicator -->
+  <rect x="455" y="2736" width="380" height="10" rx="5" fill="#5B3A29" opacity="0.18"/>
+</svg>

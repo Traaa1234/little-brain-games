@@ -7,13 +7,20 @@
     "captureInput": true,
     "webContentsDebuggingEnabled": false
   },
+  "ios": {
+    "contentInset": "always",
+    "limitsNavigationsToAppBoundDomains": false,
+    "scheme": "Little Brain Games",
+    "preferredContentMode": "mobile"
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 1500,
       "backgroundColor": "#FFF8EC",
       "showSpinner": false,
       "androidSplashResourceName": "splash",
-      "androidScaleType": "CENTER"
+      "androidScaleType": "CENTER",
+      "iosSpinnerStyle": "small"
     },
     "StatusBar": {
       "backgroundColor": "#FFF8EC",

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1290" height="2796" viewBox="0 0 1290 2796">
+  <!-- Background -->
+  <rect width="1290" height="2796" fill="#FFF8EC"/>
+
+  <!-- Dynamic Island -->
+  <rect x="470" y="18" width="350" height="42" rx="21" fill="#1a1a1a"/>
+
+  <!-- Status bar — time -->
+  <text x="72" y="58" font-family="system-ui, sans-serif" font-size="48" font-weight="600" fill="#5B3A29">9:41</text>
+  <rect x="1168" y="30" width="70" height="32" rx="8" fill="none" stroke="#5B3A29" stroke-width="3.5"/>
+  <rect x="1238" y="39" width="7" height="14" rx="3" fill="#5B3A29"/>
+  <rect x="1171" y="33" width="58" height="26" rx="5" fill="#A8C686"/>
+  <circle cx="1100" cy="46" r="7" fill="#5B3A29"/>
+  <circle cx="1122" cy="46" r="7" fill="#5B3A29"/>
+  <circle cx="1144" cy="46" r="7" fill="#5B3A29"/>
+
+  <!-- Back button -->
+  <text x="72" y="168" font-family="system-ui, sans-serif" font-size="52" fill="#F6CBA3">‹ Back</text>
+
+  <!-- Game header bar -->
+  <rect x="0" y="190" width="1290" height="130" fill="#F6CBA3"/>
+  <text x="645" y="278" font-family="system-ui, sans-serif" font-size="72" font-weight="800" fill="#5B3A29" text-anchor="middle">🦉 Odd One Out</text>
+
+  <!-- Difficulty pills -->
+  <rect x="154" y="360" width="250" height="74" rx="37" fill="#F6CBA3"/>
+  <text x="279" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#5B3A29" text-anchor="middle">Easy</text>
+  <rect x="424" y="360" width="250" height="74" rx="37" fill="#FFF8EC" stroke="#F4A261" stroke-width="3"/>
+  <text x="549" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#F4A261" text-anchor="middle">Medium</text>
+  <rect x="694" y="360" width="250" height="74" rx="37" fill="#FFF8EC" stroke="#F4A261" stroke-width="3"/>
+  <text x="819" y="408" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#F4A261" text-anchor="middle">Hard</text>
+
+  <!-- Score -->
+  <text x="645" y="514" font-family="system-ui, sans-serif" font-size="40" fill="#7a5a48" text-anchor="middle">Question 2 of 5 · Score: 1</text>
+
+  <!-- Question prompt -->
+  <text x="645" y="614" font-family="system-ui, sans-serif" font-size="62" font-weight="800" fill="#5B3A29" text-anchor="middle">Which one doesn't belong?</text>
+
+  <!-- Category hint -->
+  <rect x="295" y="644" width="700" height="70" rx="35" fill="#F6CBA3"/>
+  <text x="645" y="692" font-family="system-ui, sans-serif" font-size="42" font-weight="600" fill="#5B3A29" text-anchor="middle">Think about: Animals vs Vehicles</text>
+
+  <!-- 4 answer tiles — 2×2 grid -->
+  <!-- Tile 1 — Dog (animal) -->
+  <rect x="60" y="756" width="550" height="500" rx="40" fill="#FFF8EC" stroke="#F6CBA3" stroke-width="6"/>
+  <text x="335" y="1040" font-family="system-ui, sans-serif" font-size="220" text-anchor="middle">🐶</text>
+  <text x="335" y="1230" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#5B3A29" text-anchor="middle">Dog</text>
+
+  <!-- Tile 2 — Cat (animal) -->
+  <rect x="680" y="756" width="550" height="500" rx="40" fill="#FFF8EC" stroke="#F6CBA3" stroke-width="6"/>
+  <text x="955" y="1040" font-family="system-ui, sans-serif" font-size="220" text-anchor="middle">🐱</text>
+  <text x="955" y="1230" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#5B3A29" text-anchor="middle">Cat</text>
+
+  <!-- Tile 3 — Car (vehicle = ODD ONE OUT) — highlighted differently -->
+  <rect x="60" y="1296" width="550" height="500" rx="40" fill="#FFF8EC" stroke="#F6CBA3" stroke-width="6"/>
+  <text x="335" y="1580" font-family="system-ui, sans-serif" font-size="220" text-anchor="middle">🚗</text>
+  <text x="335" y="1770" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#5B3A29" text-anchor="middle">Car</text>
+
+  <!-- Tile 4 — Bird (animal) -->
+  <rect x="680" y="1296" width="550" height="500" rx="40" fill="#FFF8EC" stroke="#F6CBA3" stroke-width="6"/>
+  <text x="955" y="1580" font-family="system-ui, sans-serif" font-size="220" text-anchor="middle">🐦</text>
+  <text x="955" y="1770" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#5B3A29" text-anchor="middle">Bird</text>
+
+  <!-- Progress bar -->
+  <rect x="60" y="1840" width="1170" height="26" rx="13" fill="#F6CBA3"/>
+  <rect x="60" y="1840" width="234" height="26" rx="13" fill="#F4A261"/>
+
+  <!-- Correct answer feedback (shown after tap) -->
+  <rect x="130" y="1910" width="1030" height="140" rx="70" fill="#A8C686"/>
+  <text x="645" y="1998" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#FFF8EC" text-anchor="middle">🎉 You got it right!</text>
+
+  <!-- Explanation bubble -->
+  <rect x="130" y="2080" width="1030" height="120" rx="30" fill="#FFF8EC" stroke="#A8C686" stroke-width="4"/>
+  <text x="645" y="2152" font-family="system-ui, sans-serif" font-size="44" fill="#5B3A29" text-anchor="middle">A car is a vehicle, not an animal!</text>
+
+  <!-- Next button -->
+  <rect x="295" y="2230" width="700" height="130" rx="65" fill="#F4A261"/>
+  <text x="645" y="2314" font-family="system-ui, sans-serif" font-size="62" font-weight="700" fill="#FFF8EC" text-anchor="middle">Next →</text>
+
+  <!-- iOS Home Indicator -->
+  <rect x="455" y="2736" width="380" height="10" rx="5" fill="#5B3A29" opacity="0.18"/>
+</svg>

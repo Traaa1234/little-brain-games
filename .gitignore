@@ -10,7 +10,7 @@ node_modules/
 npm-debug.log*
 package-lock.json
 
-# Capacitor / Android (Phase 1)
+# Capacitor / Android
 android-app/android/.gradle/
 android-app/android/build/
 android-app/android/app/build/
@@ -19,6 +19,15 @@ android-app/android/.idea/
 android-app/android/captures/
 android-app/android/.cxx/
 *.iml
+
+# Capacitor / iOS
+android-app/ios/App/Pods/
+android-app/ios/App/App.xcworkspace/xcuserdata/
+android-app/ios/App/App.xcodeproj/xcuserdata/
+android-app/ios/App/App.xcodeproj/project.xcworkspace/xcuserdata/
+android-app/ios/App/build/
+android-app/ios/App/DerivedData/
+android-app/ios/.xcode.env.local
 
 # Secrets
 .env
